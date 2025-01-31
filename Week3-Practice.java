@@ -1,6 +1,6 @@
 // Practice - Week 3
 // Author: Noah Whiffen - SD 12
-//Date: January 30th, 2025
+//Dates: January 30th, 2025 - 
 
 // Circle class
 class Circle {
@@ -108,8 +108,6 @@ class MyPoint {
 
 // MyCircle class (Different class than circle above)
 
-
-
 class MyCircle {
     private MyPoint center;
     private int radius;
@@ -117,5 +115,76 @@ class MyCircle {
     public MyCircle() {
         this.center = new MyPoint(0, 0);
         this.radius = 1;
+    }
+
+    // Creates a circle from x, y coordinates and radius
+    public MyCircle(int x, int y, int radius) {
+        this.center = new MyPoint(x, y);
+        this.radius = radius;
+    }
+
+    // Creates a circle usingan existing MyPoint object for the center, and a radius
+    public MyCircle(MyPoint center, int radius) {
+        this.center = center;
+        this.radius = radius;
+    }
+
+    public int getRadius() {
+        return radius;
+    }
+
+    public void setRadius(int radius) {
+        this.radius = radius;
+    }
+
+    public MyPoint getCenter() {
+        return center;
+    }
+
+    public void setCenter(MyPoint center) {
+        this.center = new MyPoint();
+    }
+
+    public int getCenterX(int x) {
+        return x;
+    }
+
+    public void setCenterX(int x) {
+        center.setX(x);
+    }
+
+    public int getCenterY(int y) {
+        return y;
+    }
+
+    public void setCenterY(int y) {
+        center.setY(y);
+    }
+
+    public int getCenterXY(MyPoint center) {
+        return center.getX(x) + center.getY(y);
+    }
+
+    public void setCenterXY(int x, int y) {
+        center.setX(x);
+        center.setY(y);
+    }
+
+    public String toString() {
+        return "My Circle [radius = " + radius + ", " + center + "]"; 
+    }
+
+    public double getArea() {
+        double area = Math.PI * Math.pow(radius, 2);
+        return area;
+    }
+
+    public double getCircumference() {
+        double circumference = 2 * Math.PI * radius;
+        return circumference;
+    }
+
+    public double distanceToCenter(MyCircle anotherCircle) {
+        return this.center.distance(anotherCircle.center);
     }
 }
