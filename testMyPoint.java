@@ -2,7 +2,7 @@
 // Author: Noah Whiffen - SD 12
 //Date: January 30th, 2025
 
-public class testMyPoint {
+public class TestMyPoint {
     
     public static void main(String[] args) {
 

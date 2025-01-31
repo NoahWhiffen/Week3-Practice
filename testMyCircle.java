@@ -2,7 +2,7 @@
 // Author: Noah Whiffen - SD 12
 //Date: January 31th, 2025
 
-public class testMyCircle {
+public class TestMyCircle {
 
     public static void main(String[] args) {
 
