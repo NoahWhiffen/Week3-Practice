@@ -1,3 +1,7 @@
+// Practice - Week 3
+// Author: Noah Whiffen - SD 12
+//Date: January 30th, 2025
+
 public class testCircle {
     public static void main(String[] args) {
         // Create two Circle objects
