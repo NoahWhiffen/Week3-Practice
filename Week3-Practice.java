@@ -250,6 +250,138 @@ class MyTriangle{
     }
 }
 
+// Customer class
 class Customer {
-    
+    private int ID;
+    private String name;
+    private char gender;
+    private int discount;
+
+    public Customer(int ID, String name, char gender, int discount) {
+        this.ID = ID;
+        this.name = name;
+        this.gender = gender;
+        this.discount = discount;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public char getGender() {
+        return gender;
+    }
+
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+
+    public String toString() {
+        return name + "(" + ID + ")";
+    }
+}
+
+//Invoice class
+class Invoice {
+    int ID;
+    Customer customer;
+    double amount;
+
+    public Invoice(int ID, Customer customer, double amount) {
+        this.ID = ID;
+        this.customer = customer;
+        this.amount = amount;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public String getCustomerName() {
+        return customer.getName();
+    }
+
+    public double getAmountAfterDiscount() {
+        double discount = customer.getDiscount();
+        return amount - (discount / 100);
+    }
+}
+
+//Account class
+class Account {
+    int ID;
+    Customer customer;
+    double balance;
+
+    // Default Constructor
+    public Account(int ID, Customer customer) {
+        this.ID = ID;
+        this.customer = customer;
+        this.balance = 0.0;
+    }
+
+    // Constructor with balance initialization
+    public Account(int ID, Customer customer, double balance) {
+        this.ID = ID;
+        this.customer = customer;
+        this.balance = balance;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public String toString() {
+        return customer.toString() + "balance: $" + String.format("%.2f", balance);
+    }
+
+    public Account deposit(double amount) {
+        balance = balance + amount;
+        return this; 
+    }
+    public Account withdraw(double amount) {
+        if (balance >= amount) {
+            balance -= amount;
+            return this;
+        } else {
+            System.out.println("Amount withdrawn exceeds the current balance!");
+            return this;
+        }
+    }
 }
