@@ -150,7 +150,7 @@ class MyCircle {
     }
 
     public int getCenterX(int x) {
-        return x;
+        return center.getX();
     }
 
     public void setCenterX(int x) {
@@ -158,7 +158,7 @@ class MyCircle {
     }
 
     public int getCenterY(int y) {
-        return y;
+        return center.getY();
     }
 
     public void setCenterY(int y) {
@@ -291,9 +291,9 @@ class Customer {
 
 //Invoice class
 class Invoice {
-    int ID;
-    Customer customer;
-    double amount;
+    private int ID;
+    private Customer customer;
+    private double amount;
 
     public Invoice(int ID, Customer customer, double amount) {
         this.ID = ID;
@@ -333,9 +333,9 @@ class Invoice {
 
 //Account class
 class Account {
-    int ID;
-    Customer customer;
-    double balance;
+    private int ID;
+    private Customer customer;
+    private double balance;
 
     // Default Constructor
     public Account(int ID, Customer customer) {
