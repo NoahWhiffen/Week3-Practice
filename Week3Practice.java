@@ -47,8 +47,8 @@ class Circle {
 
 // MyPoint class
 class MyPoint {
-    private int x;
-    private int y;
+    private double x;
+    private double y;
 
     // Default Constructor
     public MyPoint() {
@@ -56,28 +56,28 @@ class MyPoint {
         this.y = 0;
     }
 
-    public MyPoint(int x, int y) {
+    public MyPoint(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
-    public void setY(int y) {
+    public void setY(double y) {
         this.y = y;
     }
 
-    public void setXY(int x, int y) {
+    public void setXY(double x, double y) {
         this.x = x;
         this.y = y;
     }
@@ -86,22 +86,22 @@ class MyPoint {
         return "(" + x + "," + y + ")";
     }
 
-    public double distance(int x, int y) {
+    public double distance(double x, double y) {
         // Distance from this point to the given point at x,y
-        int xDiff = this.x - x;
-        int yDiff = this.y - y;
+        double xDiff = this.x - x;
+        double yDiff = this.y - y;
         return Math.sqrt((xDiff * xDiff) + (yDiff * yDiff));
     }
 
     public double distance(MyPoint anotherPoint) { // Use this for distance between points in triangle
-        int xDiff = this.x - anotherPoint.x;
-        int yDiff = this.y - anotherPoint.y;
+        double xDiff = this.x - anotherPoint.x;
+        double yDiff = this.y - anotherPoint.y;
         return Math.sqrt((xDiff * xDiff) + (yDiff * yDiff));
     }
 
     public double distance() {
-        int xDiff = this.x - 0;
-        int yDiff = this.y - 0;
+        double xDiff = this.x - 0;
+        double yDiff = this.y - 0;
         return Math.sqrt((xDiff * xDiff) + (yDiff * yDiff));
     }
 }
@@ -118,7 +118,7 @@ class MyCircle {
     }
 
     // Creates a circle from x, y coordinates and radius
-    public MyCircle(int x, int y, int radius) {
+    public MyCircle(double x, double y, int radius) {
         this.center = new MyPoint(x, y);
         this.radius = radius;
     }
@@ -145,24 +145,24 @@ class MyCircle {
         this.center = new MyPoint();
     }
 
-    public int getCenterX(int x) {
+    public double getCenterX(double x) {
         return center.getX();
     }
 
-    public void setCenterX(int x) {
+    public void setCenterX(double x) {
         center.setX(x);
     }
 
-    public int getCenterY(int y) {
+    public double getCenterY(double y) {
         return center.getY();
     }
 
-    public void setCenterY(int y) {
+    public void setCenterY(double y) {
         center.setY(y);
     }
 
-    public int getCenterXY(MyPoint center) {
-        return center.getX(x) + center.getY(y);
+    public double getCenterXY(MyPoint center) {
+        return center.getX() + center.getY();
     }
 
     public void setCenterXY(int x, int y) {
@@ -195,7 +195,9 @@ class MyTriangle{
     MyPoint v2;
     MyPoint v3;
 
-    public MyTriangle(int x1, int y1, int x2, int y2, int x3, int y3) {
+    private static final double EPSILON = 1E-6; // To avoid precision errors
+
+    public MyTriangle(double x1, double y1, double x2, double y2, double x3, double y3) {
         this.v1 = new MyPoint(x1, y1);
         this.v2 = new MyPoint(x2, y2);
         this.v3 = new MyPoint(x3, y3);
@@ -223,8 +225,7 @@ class MyTriangle{
         // Calculate the area using the determinant formula
         double area = Math.abs(v1.getX() * (v2.getY() - v3.getY()) + v2.getX() * (v3.getY() - v1.getY()) + v3.getX() * (v1.getY() - v2.getY())) / 2.0;
         
-        // If the area is zero, the points are collinear, meaning it's not a valid triangle
-        return area != 0;
+        return area > EPSILON; // The area is compared to EPSILON to account for floating-point precision errors and ensure the points are not collinear.
     }
 
     public String getType() {
@@ -233,9 +234,9 @@ class MyTriangle{
         double side3 = v3.distance(v1);
     
         if (isValidTriangle(v1, v2, v3)) {
-            if (side1 == side2 && side2 == side3) { // Cannot get the equilateral condition to work
+            if (Math.abs(side1 - side2) < EPSILON && Math.abs(side2 - side3) < EPSILON) { 
                 return "Equilateral";
-            } else if (side1 == side2 || side2 == side3 || side1 == side3) {
+            } else if (Math.abs(side1 - side2) < EPSILON || Math.abs(side2 - side3) < EPSILON || Math.abs(side1 - side3) < EPSILON) {
                 return "Isosceles";
             } else {
                 return "Scalene";

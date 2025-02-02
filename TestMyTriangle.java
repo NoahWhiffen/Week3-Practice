@@ -5,7 +5,7 @@ public class TestMyTriangle {
         // Triangle 1
         MyPoint p1 = new MyPoint(0, 0);
         MyPoint p2 = new MyPoint(8, 0);
-        MyPoint p3 = new MyPoint(0, 8);
+        MyPoint p3 = new MyPoint(4, (Math.sqrt(48)));
 
         // Triangle 2
         MyPoint p4 = new MyPoint(0, 0);
@@ -46,6 +46,15 @@ public class TestMyTriangle {
         System.out.println("Triangle 2: " + t2.getType());
         System.out.println("Triangle 3: " + t3.getType());
         System.out.println("-----------------------------");
+
+        // Get and print distances to check if they are as expected
+        double side1 = p1.distance(p2);  // Distance between p1 and p2
+        double side2 = p2.distance(p3);  // Distance between p2 and p3
+        double side3 = p3.distance(p1);  // Distance between p3 and p1
+        
+        System.out.println("Distance between p1 and p2: " + side1);
+        System.out.println("Distance between p2 and p3: " + side2); // Precision inaccuracy due to EPSILON
+        System.out.println("Distance between p3 and p1: " + side3); // Precision inaccuracy due to EPSILON
 
     }
 }
