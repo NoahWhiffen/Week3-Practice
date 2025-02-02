@@ -1,10 +1,6 @@
 // Practice - Week 3
 // Author: Noah Whiffen - SD 12
-//Dates: January 30th, 2025 - 
-
-// NOTES TO SELF
-// come back and fix triangle validation
-// come back and check TestMyCircle file
+//Dates: January 30th, 2025 - February 1st, 2025
 
 // Circle class
 class Circle {
@@ -237,7 +233,7 @@ class MyTriangle{
         double side3 = v3.distance(v1);
     
         if (isValidTriangle(v1, v2, v3)) {
-            if (side1 == side2 && side2 == side3) {
+            if (side1 == side2 && side2 == side3) { // Cannot get the equilateral condition to work
                 return "Equilateral";
             } else if (side1 == side2 || side2 == side3 || side1 == side3) {
                 return "Isosceles";
@@ -285,7 +281,7 @@ class Customer {
     }
 
     public String toString() {
-        return name + "(" + ID + ")";
+        return name + " (" + ID + ") ";
     }
 }
 
@@ -368,7 +364,7 @@ class Account {
     }
 
     public String toString() {
-        return customer.toString() + "balance: $" + String.format("%.2f", balance);
+        return customer.toString() + "Balance: $" + String.format("%.2f", balance);
     }
 
     public Account deposit(double amount) {
